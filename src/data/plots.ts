@@ -168,9 +168,9 @@ export const testimonials = [
 ];
 
 export const contactInfo = {
-  phone: "+91 9876543210",
-  whatsapp: "919876543210",
+  phone: "+91 9835405160",
+  whatsapp: "919835405160",
   email: "contact@dreamhomedeveloper.com",
-  address: "123, Main Road, Phulwari Sharif, Patna, Bihar - 801505",
+  address: "Dream Home'z Developer, Phulwari Sharif, Patna, Bihar - 801505",
   workingHours: "Mon - Sat: 9:00 AM - 7:00 PM",
 };
