@@ -133,7 +133,7 @@ const Contact = () => {
               {/* Google Map - Dream Home'z Developer, Phulwari Sharif with Red Marker */}
               <div className="rounded-xl overflow-hidden shadow-elevated border border-border">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1800!2d85.08363!3d25.57787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed57dea23e7c6b%3A0x9f4b7e3a5c2d1e8f!2sDream%20Home&#39;z%20Developer!5e1!3m2!1sen!2sin!4v1707000000000!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d900!2d85.069631!3d25.572214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed57c7d8e7e8e7%3A0x1234567890abcdef!2s25.572214%2C%2085.069631!5e0!3m2!1sen!2sin!4v1707000000000!5m2!1sen!2sin"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
