@@ -49,7 +49,7 @@ export const Header = () => {
               
             </div>
             <div className="hidden sm:block">
-              <h1 className="font-display text-xl md:text-2xl font-bold text-primary leading-none tracking-tight">
+              <h1 className="font-display text-xl md:text-2xl font-bold text-[#000] leading-none tracking-tight">
                 DreamHome'z Developer
               </h1>
             </div>
