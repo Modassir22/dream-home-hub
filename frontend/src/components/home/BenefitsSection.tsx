@@ -13,7 +13,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 export const BenefitsSection = () => {
   return (
-    <section className="section-padding bg-secondary/50">
+    <section className="section-padding -mt-8 bg-secondary/50">
       <div className="container-custom">
         <SectionHeader
           title="Why Choose DreamHomeDeveloper?"

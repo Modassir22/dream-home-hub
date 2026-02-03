@@ -1,73 +1,153 @@
-# Welcome to your Lovable project
+# Dream Homez Developer - Website
 
-## Project info
+## Project Info
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**Dream Homez Developer** - Premium residential plots in Phulwari Sharif, Patna
 
-## How can I edit this code?
+## About
 
-There are several ways of editing your application.
+This is a full-stack real estate website for Dream Homez Developer, featuring:
+- Frontend: React + TypeScript + Vite + Tailwind CSS
+- Backend: Node.js + Express + MongoDB
+- Admin panel for managing plots, team members, testimonials, and stats
+- User dashboard with wishlist functionality
+- WhatsApp integration
+- Cloudinary image upload
+- JWT authentication with 30-day sessions
 
-**Use Lovable**
+## Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### Frontend
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui components
+- Framer Motion for animations
 
-Changes made via Lovable will be committed automatically to this repo.
+### Backend
+- Node.js
+- Express.js
+- MongoDB with Mongoose
+- JWT for authentication
+- Cloudinary for image storage
+- Multer for file uploads
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
+- Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- MongoDB Atlas account or local MongoDB
+- Cloudinary account for image uploads
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
-
+1. Clone the repository:
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+git clone https://github.com/Modassir22/dream-home-hub.git
+cd dream-home-hub
 ```
 
-**Edit a file directly in GitHub**
+2. Install dependencies:
+```sh
+npm install
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This will install dependencies for both frontend and backend.
 
-**Use GitHub Codespaces**
+### Running the Project
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Start both frontend and backend servers:
+```sh
+npm start
+```
 
-## What technologies are used for this project?
+This will run:
+- Backend on `http://localhost:5000`
+- Frontend on `http://localhost:8080`
 
-This project is built with:
+### Environment Variables
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+#### Backend (.env)
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+NODE_ENV=development
+FRONTEND_URL=http://localhost:8080
 
-## How can I deploy this project?
+CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_cloudinary_key
+CLOUDINARY_API_SECRET=your_cloudinary_secret
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+#### Frontend (.env)
+```env
+VITE_API_URL=http://localhost:5000
+```
 
-## Can I connect a custom domain to my Lovable project?
+## Features
 
-Yes, you can!
+### User Features
+- Browse available plots
+- View plot details with image gallery
+- Add plots to wishlist
+- Track plot status (Interested → Contacted → Visiting → Negotiating → Purchased)
+- Add personal notes for each plot
+- WhatsApp integration for quick contact
+- User authentication and registration
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Admin Features
+- Manage plots (CRUD operations)
+- Manage team members
+- Manage testimonials
+- Update contact information
+- Update website statistics
+- View all user wishlists
+- Image upload with Cloudinary
+- Protected admin routes
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Default Admin Credentials
+
+- Username: `modassir`
+- Password: `admin123`
+
+## Project Structure
+
+```
+dream-home-hub/
+├── backend/
+│   ├── config/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── scripts/
+│   └── server.js
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── contexts/
+│   │   ├── pages/
+│   │   ├── hooks/
+│   │   └── lib/
+│   └── index.html
+└── package.json
+```
+
+## Deployment
+
+### Backend Deployment
+1. Set environment variables on your hosting platform
+2. Update `FRONTEND_URL` to your production domain
+3. Set `NODE_ENV=production`
+4. Deploy to platforms like Heroku, Railway, or Render
+
+### Frontend Deployment
+1. Update `VITE_API_URL` to your backend URL
+2. Build the project: `npm run build`
+3. Deploy the `dist` folder to platforms like Vercel, Netlify, or Cloudflare Pages
+
+## License
+
+© 2024 Dream Homez Developer. All rights reserved.

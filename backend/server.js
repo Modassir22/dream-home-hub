@@ -17,8 +17,34 @@ dotenv.config();
 
 const app = express();
 
+// CORS Configuration
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      process.env.FRONTEND_URL || 'http://localhost:8080',
+      'http://localhost:8080',
+      'http://localhost:3000',
+      'http://localhost:5173',
+    ];
+    
+    if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
+      callback(null, true);
+    } else {
+      console.log(' CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
@@ -29,11 +55,11 @@ const connectDB = async () => {
     await mongoose.connect(process.env.MONGODB_URI, {
       serverSelectionTimeoutMS: 5000,
     });
-    console.log('✅ MongoDB Connected');
+    console.log(' MongoDB Connected');
   } catch (err) {
-    console.error('❌ MongoDB Connection Error:', err.message);
-    console.log('⚠️  Server will continue running, but database operations will fail');
-    console.log('💡 Please check your MongoDB connection string in .env file');
+    console.error(' MongoDB Connection Error:', err.message);
+    console.log('  Server will continue running, but database operations will fail');
+    console.log(' Please check your MongoDB connection string in .env file');
   }
 };
 
@@ -41,15 +67,15 @@ connectDB();
 
 // Handle MongoDB connection errors after initial connection
 mongoose.connection.on('error', (err) => {
-  console.error('❌ MongoDB Error:', err.message);
+  console.error('MongoDB Error:', err.message);
 });
 
 mongoose.connection.on('disconnected', () => {
-  console.log('⚠️  MongoDB Disconnected. Attempting to reconnect...');
+  console.log('MongoDB Disconnected. Attempting to reconnect...');
 });
 
 mongoose.connection.on('reconnected', () => {
-  console.log('✅ MongoDB Reconnected');
+  console.log('MongoDB Reconnected');
 });
 
 // Routes
@@ -82,7 +108,7 @@ app.use((req, res) => {
 
 // Global error handler
 app.use((err, req, res, next) => {
-  console.error('❌ Server Error:', err);
+  console.error(' Server Error:', err);
   res.status(err.status || 500).json({
     message: err.message || 'Internal server error',
     ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
@@ -93,41 +119,33 @@ const PORT = process.env.PORT || 5000;
 
 // Handle port already in use error
 const server = app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📍 API: http://localhost:${PORT}/api`);
-  console.log(`💚 Health Check: http://localhost:${PORT}/api/health`);
 }).on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
-    console.error(`❌ Port ${PORT} is already in use!`);
-    console.log(`💡 Try one of these solutions:`);
-    console.log(`   1. Kill the process using port ${PORT}`);
-    console.log(`   2. Change PORT in .env file`);
-    console.log(`   3. Run: taskkill /F /IM node.exe (Windows)`);
     process.exit(1);
   } else {
-    console.error('❌ Server Error:', err);
+    console.error('Server Error:', err);
     process.exit(1);
   }
 });
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
-  console.log('👋 SIGTERM received. Shutting down gracefully...');
+  console.log(' SIGTERM received. Shutting down gracefully...');
   server.close(() => {
-    console.log('✅ Server closed');
+    console.log(' Server closed');
     mongoose.connection.close(false, () => {
-      console.log('✅ MongoDB connection closed');
+      console.log(' MongoDB connection closed');
       process.exit(0);
     });
   });
 });
 
 process.on('SIGINT', () => {
-  console.log('\n👋 SIGINT received. Shutting down gracefully...');
+  console.log('\n SIGINT received. Shutting down gracefully...');
   server.close(() => {
-    console.log('✅ Server closed');
+    console.log(' Server closed');
     mongoose.connection.close(false, () => {
-      console.log('✅ MongoDB connection closed');
+      console.log(' MongoDB connection closed');
       process.exit(0);
     });
   });
@@ -135,12 +153,12 @@ process.on('SIGINT', () => {
 
 // Handle uncaught exceptions
 process.on('uncaughtException', (err) => {
-  console.error('❌ Uncaught Exception:', err);
+  console.error(' Uncaught Exception:', err);
   process.exit(1);
 });
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (reason, promise) => {
-  console.error('❌ Unhandled Rejection at:', promise, 'reason:', reason);
+  console.error(' Unhandled Rejection at:', promise, 'reason:', reason);
   process.exit(1);
 });
