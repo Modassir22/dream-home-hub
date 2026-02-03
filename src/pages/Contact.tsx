@@ -130,12 +130,19 @@ const Contact = () => {
                 </a>
               </div>
 
-              {/* Map Placeholder */}
-              <div className="aspect-video bg-secondary rounded-xl flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-2" />
-                  <p className="text-muted-foreground">Phulwari Sharif, Patna, Bihar</p>
-                </div>
+              {/* Google Map - Phulwari Sharif, Patna */}
+              <div className="rounded-xl overflow-hidden shadow-elevated border border-border">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14401.44986853698!2d85.0821!3d25.5784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed57a86ae3d18d%3A0x4e7e9b5c3b5e4f3a!2sPhulwari%20Sharif%2C%20Patna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin"
+                  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="DreamHomeDeveloper Location - Phulwari Sharif, Patna"
+                  className="w-full"
+                />
               </div>
             </motion.div>
 
